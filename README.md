@@ -30,17 +30,17 @@ The file hierarchy of your hand-in repo should be as follows:
 
 ```
 2025-FYP/
-├── data/
+├── data/               # unzip the dataset and put it here
 │   └── example.jpg
 ├── util/
 │   ├── __init__.py
-│   ├── img_util.py
-│   └── inpaint.py
+│   ├── img_util.py     # basic image rea and write functions
+│   └── inpaint.py      # image inpainting function
 ├── result/
-│   ├── result.csv
-│   └── summary.md
-├── main.py
-├── data-student.csv
+│   ├── result.csv      # your resutls
+│   └── summary.md      # your summary
+├── main.py             # demo script for single image inpainting
+├── data-student.csv    # all image file names and group labels
 └── README.md
 ```
 
