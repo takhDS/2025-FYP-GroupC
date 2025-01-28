@@ -32,12 +32,15 @@ The file hierarchy of your hand-in repo should be as follows:
 2025-FYP/
 ├── data/
 │   └── example.jpg
-├── result/
+├── util/
 │   ├── __init__.py
 │   ├── img_util.py
 │   └── inpaint.py
-├── util/
+├── result/
+│   ├── result.csv
+│   └── summary.md
 ├── main.py
+├── data-student.csv
 └── README.md
 ```
 
