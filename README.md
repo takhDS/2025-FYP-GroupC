@@ -50,7 +50,7 @@ The file hierarchy of your hand-in repo should be as follows:
 
 1. DO NOT upload your data (images) to Github.
 2. When the same code block needs to be executed multiple times in the script, make it a custom function instead. All the custom functions and modules, such as image read and write, should be grouped into different files under the *"util"* subfolder, based on the task they are designed for. Do not put everything in a single Python file or copy-paste the same code block across the script.
-3. The "dataset.csv" lists all the image files along with a group ID, you should be only using the files assigned to your group. Your code must load the entire dataset and then filter the files based on your group ID. Ask TAs for help if you don't know how to do that.
+3. The "data-student.csv" lists all the image files along with a group ID, you should be only using the files assigned to your group. Your code must load the entire dataset and then filter the files based on your group ID. Ask TAs for help if you don't know how to do that.
 
 
 
