@@ -1,5 +1,9 @@
 # Projects in Data Science (2025)
+<<<<<<< HEAD
 a b
+=======
+
+>>>>>>> 34966d8a5dfcec074699924b5dc7fc2057d37283
 Mandatory Assignment
 
 
