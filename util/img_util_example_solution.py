@@ -65,5 +65,7 @@ class ImageDataLoader:
             if self.transform:
                 img_rgb = self.transform(img_rgb)
                 img_gray = self.transform(img_gray)
+            #also yield the name so that we can save the file easier
+            name = file_path.split("\\")[-1]
 
-            yield img_rgb, img_gray
+            yield img_rgb, img_gray, name
