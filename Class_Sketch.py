@@ -71,3 +71,7 @@ class imgmanip:
     # def plot RGB image of cv2
 
     # def plot greyscale image
+
+    img = imgmanip()
+    img.imgload("Projects in Data Science\2025-FYP-Assignment\data\example.jpg")
+    img.imgdisplay()
