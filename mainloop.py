@@ -4,10 +4,8 @@
 import random # temporary
 import numpy as np
 import matplotlib.pyplot as plt
-from skimage.color import rgb2gray
-from skimage import morphology
 from util.img_util_example_solution import ImageDataLoader as IDL
-from util.inpaint_util import removeHair as rH
+from util.mask_applier import mask_applier
 
 
 # set up data loader and an iterator for it
@@ -19,19 +17,8 @@ for _ in range(len(data_loader)):
 
     img_rgb, img_gray, img_name = next(data_iterator)
 
-    # filter out the hair
-    _, _, img_noHair = rH(img_rgb, img_gray)
-
-    # scale the values appropriately (they are defaulted to be from 0 to 1)
-    img_scaled = rgb2gray(img_noHair) * 256
-    
-    # create and refine the mask
-    im_mask = img_scaled <= 120
-    struct_el = morphology.disk(2)
-    mask_dilated = morphology.binary_erosion(morphology.binary_dilation(morphology.binary_dilation(im_mask, struct_el), struct_el), struct_el)
-
-    # apply the updated mask onto the image
-    img_noHair[mask_dilated==0] = 0
+    # use apposit function to filter out hair, create a mask and then to apply it
+    img_noH_masked = mask_applier(img_rgb, img_gray)
 
     # calculate other needed values
 
