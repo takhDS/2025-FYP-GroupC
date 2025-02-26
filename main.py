@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from util.img_util import ImageDataLoader as IDL
 from util.mask_applier import mask_applier
 from os.path import join
-from util.img_util_example_solution import saveImageFile
+from util.img_util import saveImageFile
 
 # set up data loader and an iterator for it
 data_loader = IDL("data/Data", shuffle=False)
