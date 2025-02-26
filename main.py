@@ -13,8 +13,9 @@ from util.img_util import saveImageFile
 data_loader = IDL("data", shuffle=False)
 data_iterator = iter(data_loader)
 
-# loop through the images
-for _ in range(len(data_loader)):
+# loop through the images 
+# only the first 100 are considered, since they are the only annotated ones
+for _ in range(100):
 
     img_rgb, img_gray, img_name = next(data_iterator)
 
