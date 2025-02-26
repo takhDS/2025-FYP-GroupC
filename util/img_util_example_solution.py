@@ -1,6 +1,6 @@
 import os
 import random
-
+import pandas as pd
 import cv2
 
 
@@ -34,15 +34,18 @@ def saveImageFile(img_rgb, file_path):
 
 
 class ImageDataLoader:
-    def __init__(self, directory, shuffle=False, transform=None):
+    def __init__(self, directory, shuffle=False, transform=None,groupid="C"):
         self.directory = directory
         self.shuffle = shuffle
         self.transform = transform
-
-        # get a sorted list of all image files in the directory
+        self.groupid = groupid
+        
+        df = pd.read_csv("data-student.csv")
+        # get a sorted list of all image files assigned to Group C in the directory
         self.file_list = sorted(
             [os.path.join(directory, f) for f in os.listdir(directory) if
-             f.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.tiff'))]
+            (f.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.tiff'))) and not df[df["File_ID"] == f].empty  
+            and self.groupid in df[df["File_ID"] == f]["Group_ID"].values]
         )
 
         if not self.file_list:
@@ -54,7 +57,7 @@ class ImageDataLoader:
 
         # get the total number of files
         self.num_sample = len(self.file_list)
-
+        
     def __len__(self):
         return self.num_sample
 
