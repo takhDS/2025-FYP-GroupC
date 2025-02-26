@@ -6,7 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from util.img_util_example_solution import ImageDataLoader as IDL
 from util.mask_applier import mask_applier
-
+from os.path import join
+from util.img_util_example_solution import saveImageFile
 
 # set up data loader and an iterator for it
 data_loader = IDL("data/Data", shuffle=False)
@@ -21,6 +22,11 @@ for _ in range(len(data_loader)):
     img_noH_masked = mask_applier(img_rgb, img_gray)
 
     # calculate other needed values
+
+    # save the output image
+    save_dir = './result'
+    save_file_path = join(save_dir, f'{img_name}')
+    saveImageFile(img_noH_masked, save_file_path)
 
     # compute final score
     score = random.randint(0, 100) / 100 # placeholder
@@ -39,3 +45,5 @@ for _ in range(len(data_loader)):
         print(' Most likely cancer.')
     else:
         print(' Cancerous.')
+
+    
