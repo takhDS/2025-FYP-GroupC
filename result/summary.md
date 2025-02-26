@@ -41,7 +41,7 @@ This example of machine error, flashes a light on the weak spots of our code. Wh
 
 Further insight into this topic, may be offered by the histogram of the grayscale, which is seemingly quite concentrated on the mid-range, left skewed, with drastically uneven tails. The lack of variety in shades seems to be the reason our masking function is having trouble with this image.
 ![img_70_hist](summary_images\img_70_hist.png "Image Issue #1")
-Perhaps for future reference the histogram could be used to predict the accuracy of which the program can select the mark on the skin.
+Perhaps for future reference the histogram could be used to predict the accuracy of which the program can select the mark on the skin. With more time, we could have delved into more sensitive image manipulation to help our mask detect the moles better. Theoretically, by enhancing saturation and tweaking the grayscale levels we could enhance the overall contrast levels and ultimately make the difference between the mole and the skin stand out.
 
 ## Interesting Contrast
 To contrast the previous observation, we will take another example from our data sample. Even to the human eye the shade difference between the healthy skin and the possible cancerous patch is much more visible.
