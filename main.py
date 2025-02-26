@@ -10,7 +10,7 @@ from os.path import join
 from util.img_util import saveImageFile
 
 # set up data loader and an iterator for it
-data_loader = IDL("data/Data", shuffle=False)
+data_loader = IDL("data", shuffle=False)
 data_iterator = iter(data_loader)
 
 # loop through the images
