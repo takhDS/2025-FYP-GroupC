@@ -4,7 +4,7 @@
 import random # temporary
 import numpy as np
 import matplotlib.pyplot as plt
-from util.img_util_example_solution import ImageDataLoader as IDL
+from util.img_util import ImageDataLoader as IDL
 from util.mask_applier import mask_applier
 
 

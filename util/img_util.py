@@ -1,5 +1,6 @@
+import os
 import random
-
+import pandas as pd
 import cv2
 
 
@@ -33,13 +34,19 @@ def saveImageFile(img_rgb, file_path):
 
 
 class ImageDataLoader:
-    def __init__(self, directory, shuffle=False, transform=None):
+    def __init__(self, directory, shuffle=False, transform=None,groupid="C"):
         self.directory = directory
         self.shuffle = shuffle
         self.transform = transform
-
-        # get a sorted list of all files in the directory
-        # fill in with your own code below
+        self.groupid = groupid
+        
+        df = pd.read_csv("data-student.csv")
+        # get a sorted list of all image files assigned to Group C in the directory
+        self.file_list = sorted(
+            [os.path.join(directory, f) for f in os.listdir(directory) if
+            (f.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.tiff'))) and not df[df["File_ID"] == f].empty  
+            and self.groupid in df[df["File_ID"] == f]["Group_ID"].values]
+        )
 
         if not self.file_list:
             raise ValueError("No image files found in the directory.")
@@ -48,12 +55,20 @@ class ImageDataLoader:
         if self.shuffle:
             random.shuffle(self.file_list)
 
-        # get the total number of batches
-        self.num_batches = len(self.file_list)
-
+        # get the total number of files
+        self.num_sample = len(self.file_list)
+        
     def __len__(self):
-        return self.num_batches
+        return self.num_sample
 
     def __iter__(self):
-        # fill in with your own code below
-        pass
+        for file_path in self.file_list:
+            img_rgb, img_gray = readImageFile(file_path)
+
+            if self.transform:
+                img_rgb = self.transform(img_rgb)
+                img_gray = self.transform(img_gray)
+            #also yield the name so that we can save the file easier
+            name = file_path.split("\\")[-1]
+
+            yield img_rgb, img_gray, name
